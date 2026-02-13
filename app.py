@@ -218,18 +218,16 @@ default_test_data = load_test_data()
 # ============================================================
 
 with st.sidebar:
-    st.image("https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/BITS_Pilani-Logo.svg/1200px-BITS_Pilani-Logo.svg.png", width=80)
     st.markdown("### ML Assignment 2")
     st.markdown("**M.Tech AIML/DSE**")
     st.markdown("---")
 
     # Model selection
-    st.markdown("#### Select Classification Model")
+    st.markdown("#### Select Classification Models")
     selected_model = st.selectbox(
         "Choose a model to inspect:",
         MODEL_NAMES,
-        index=0,
-        help="Select one of the 6 trained classification models"
+        index=0
     )
 
     st.markdown("---")
@@ -259,21 +257,16 @@ with st.sidebar:
 
 # Header
 st.markdown('<p class="main-header">Bank Marketing - ML Classification Dashboard</p>', unsafe_allow_html=True)
-st.markdown(
-    '<p class="sub-header">Predicting Term Deposit Subscription using 6 Machine Learning Models | '
-    'UCI Bank Marketing Dataset (45,211 instances, 16 features)</p>',
-    unsafe_allow_html=True
-)
 
 # ============================================================
 # TAB LAYOUT
 # ============================================================
 
 tab1, tab2, tab3, tab4 = st.tabs([
-    "📊 Dataset Overview",
-    "📈 Model Comparison",
-    "🔍 Model Details",
-    "📁 Upload & Predict"
+    " Dataset Overview",
+    " Model Comparison",
+    " Model Details",
+    " Upload & Predict"
 ])
 
 # ----------------------------------------------------------
@@ -660,16 +653,4 @@ with tab4:
                 mime="text/csv"
             )
 
-# ============================================================
-# FOOTER
-# ============================================================
 
-st.markdown("---")
-st.markdown(
-    "<div style='text-align: center; color: #888; font-size: 0.85rem;'>"
-    "M.Tech (AIML/DSE) | Machine Learning Assignment 2 | "
-    "Bank Marketing Dataset - UCI ML Repository | "
-    "Built with Streamlit"
-    "</div>",
-    unsafe_allow_html=True
-)

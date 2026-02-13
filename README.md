@@ -2,9 +2,9 @@
 
 ## Problem Statement
 
-The goal of this project is to predict whether a client of a Portuguese banking institution will **subscribe to a term deposit** based on data from direct marketing campaigns (phone calls). This is a **binary classification problem** where the target variable `y` takes values `yes` (subscribed) or `no` (did not subscribe).
+The aim of this project is to predict whether a client of a Portuguese banking institution will **subscribe to a term deposit** based on data from direct marketing campaigns (phone calls). This is a **binary classification problem** where the target variable `y` takes values `yes` (subscribed) or `no` (did not subscribe).
 
-We implement and compare **6 machine learning classification models** on this dataset, evaluating each using 6 standard metrics: Accuracy, AUC, Precision, Recall, F1 Score, and Matthews Correlation Coefficient (MCC).
+We implement and compare **6 machine learning classification models** on this dataset, evaluating each using 6 standard metrics: Accuracy, AUC, Precision, Recall, F1 Score, and MCC.
 
 ---
 
@@ -12,7 +12,7 @@ We implement and compare **6 machine learning classification models** on this da
 
 | Property | Value |
 |---|---|
-| **Source** | [UCI Machine Learning Repository - Bank Marketing (ID: 222)](https://archive.ics.uci.edu/dataset/222/bank+marketing) |
+| **Source** | [UCI Machine Learning Repository - Bank Marketing](https://archive.ics.uci.edu/dataset/222/bank+marketing) |
 | **Instances** | 45,211 |
 | **Features** | 16 |
 | **Target Variable** | `y` — Has the client subscribed a term deposit? (yes/no) |
@@ -41,7 +41,6 @@ We implement and compare **6 machine learning classification models** on this da
 | 15 | `previous` | Numeric | Number of contacts before this campaign |
 | 16 | `poutcome` | Categorical | Outcome of previous campaign (unknown, failure, other, success) |
 
-**Citation:** Moro, S., Rita, P., & Cortez, P. (2014). *A data-driven approach to predict the success of bank telemarketing.* Decision Support Systems. DOI: 10.24432/C5K306
 
 ---
 
@@ -130,7 +129,7 @@ Six classification models were implemented, each wrapped in an sklearn `Pipeline
 
 4. **Feature Importance:** Across tree-based models, `duration` (call duration) is the most predictive feature, followed by `balance`, `poutcome` (previous campaign outcome), and `month`. **Important caveat:** `duration` is known only after the call ends, making it unavailable for prospective prediction. In a real deployment, one should retrain without `duration` for a truly prospective model.
 
-5. **MCC as the Most Reliable Metric:** Matthews Correlation Coefficient considers all four confusion matrix quadrants (TP, TN, FP, FN) and ranges from -1 to +1. XGBoost's MCC of 0.4939 is the highest, confirming it is genuinely the best at distinguishing both classes. The relatively modest MCC values across all models (0.38-0.49) reflect the inherent difficulty of predicting a rare event (11.7%) from marketing call data.
+5. **MCC as the Most Reliable Metric:** MCC considers all four confusion matrix quadrants (TP, TN, FP, FN) and ranges from -1 to +1. XGBoost's MCC of 0.4939 is the highest, confirming it is genuinely the best at distinguishing both classes. The relatively modest MCC values across all models (0.38-0.49) reflect the inherent difficulty of predicting a rare event (11.7%) from marketing call data.
 
 6. **KNN Limitations in High Dimensions:** KNN shows the weakest performance overall, suffering from the curse of dimensionality after one-hot encoding expands the feature space. It also has the largest model file (11 MB) since it stores all training instances. For datasets with many categorical features, distance-based methods are generally less effective than tree-based approaches.
 
@@ -175,17 +174,3 @@ streamlit run app.py
 
 ---
 
-## Tech Stack
-
-- **Python 3.9+**
-- **scikit-learn** — ML models, preprocessing, metrics
-- **XGBoost** — Gradient boosting classifier
-- **Streamlit** — Interactive web application
-- **pandas / numpy** — Data manipulation
-- **matplotlib / seaborn** — Visualization
-- **ucimlrepo** — Dataset fetching from UCI repository
-- **joblib** — Model serialization
-
----
-
-*M.Tech (AIML/DSE) — Machine Learning Assignment 2*
